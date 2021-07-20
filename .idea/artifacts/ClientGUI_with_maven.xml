@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ClientGUI_with_maven">
+    <output-path>$PROJECT_DIR$/out/artifacts/ClientGUI_with_maven</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+        <option name="description" value="test" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="chat" />
+        <option name="vendor" value="PGUPS" />
+        <option name="version" value="1.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="ClientGUI_with_maven.jar">
+        <element id="module-output" name="ClientGUI_with_maven" />
+      </element>
+      <element id="jpa-descriptors" facet="ClientGUI_with_maven/jpa/JPA" />
+      <element id="library" level="project" name="controlsfx-8.40.14" />
+      <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
+      <element id="library" level="project" name="emojisfx-1.0" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.15" />
+      <element id="library" level="project" name="Maven: io.netty:netty-all:4.1.48.Final" />
+      <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+      <element id="library" level="project" name="Maven: junit:junit:4.10" />
+      <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
+      <element id="library" level="project" name="Spring Security-5.2.1" />
+      <element id="library" level="project" name="svg-salamander-1.0" />
+    </root>
+  </artifact>
+</component>

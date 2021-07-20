@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.textfield.CustomPasswordField?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="850.0" style="-fx-border-radius: 10px;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <styleClass>
+            <String fx:value="main-container" />
+         </styleClass>
+         <top>
+            <BorderPane prefHeight="30.0" styleClass="menu-bar" BorderPane.alignment="CENTER">
+               <right>
+                  <HBox fx:id="box" alignment="CENTER" snapToPixel="false" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane fx:id="collapse" styleClass="deploy-collapse">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/collapse.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="deploy" layoutX="128.0" layoutY="10.0" styleClass="deploy-collapse">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/deploy.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="close" layoutX="118.0" layoutY="10.0" styleClass="exit">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/close.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                     <padding>
+                        <Insets bottom="2.5" left="2.5" right="2.5" top="2.5" />
+                     </padding>
+                  </HBox>
+               </right>
+               <left>
+                  <Label fx:id="nickName" opacity="0.7" text="unidentified" textFill="#d15d24" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
+                  </Label>
+               </left>
+            </BorderPane>
+         </top>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <center>
+            <AnchorPane styleClass="main-border" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="chat_page" prefHeight="570.0" prefWidth="815.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutX="8.0" layoutY="7.0" prefHeight="565.0" prefWidth="84.0" spacing="10.0" styleClass="menu-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="-1.0">
+                           <children>
+                              <Pane fx:id="linkToUserPage" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" styleClass="avatar">
+                                 <children>
+                                    <Label fx:id="defaultLabelUser" alignment="CENTER" layoutX="24.0" layoutY="19.0" text="M" textFill="#d15d2496">
+                                       <font>
+                                          <Font name="Cambria" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Separator opacity="0.25" prefWidth="200.0" />
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0f0f1c;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <VBox fx:id="menuDialog" alignment="TOP_CENTER" prefHeight="458.0" prefWidth="72.0" spacing="10.0">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                              <Label fx:id="addChat" onMouseClicked="#searchChat" text="Add chat" textFill="#b3bbe5">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                        <AnchorPane layoutX="94.0" layoutY="9.0" prefHeight="558.0" prefWidth="745.0" styleClass="tabPane" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                           <children>
+                              <TabPane fx:id="tabPaneChat" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab fx:id="search" text="searchChat">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="446.0" prefWidth="260.0" style="-fx-background-color: #00000000;" vbarPolicy="NEVER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="80.0">
+                                                   <content>
+                                                      <VBox fx:id="publicRoom" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefHeight="446.0" prefWidth="260.0" spacing="10.0">
+                                                         <padding>
+                                                            <Insets top="10.0" />
+                                                         </padding>
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="250.0" text="Public rooms :" textFill="#b3bbe5">
+                                                               <font>
+                                                                  <Font name="Cambria" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Separator opacity="0.5" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                         </children></VBox>
+                                                   </content>
+                                                </ScrollPane>
+                                                <TextField fx:id="textSearch" layoutX="20.0" layoutY="26.0" promptText="add private chat" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="26.0">
+                                                   <font>
+                                                      <Font name="Cambria" size="16.0" />
+                                                   </font>
+                                                </TextField>
+                                                <VBox layoutX="427.0" layoutY="80.0" prefHeight="200.0" prefWidth="300.0" spacing="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="80.0">
+                                                   <children>
+                                                      <TextField fx:id="chatName" promptText="chat name">
+                                                         <font>
+                                                            <Font name="Cambria" size="16.0" />
+                                                         </font>
+                                                      </TextField>
+                                                      <RadioButton fx:id="privateChat" mnemonicParsing="false" text="Private chat" textFill="#b3bbe5">
+                                                         <font>
+                                                            <Font name="Cambria" size="16.0" />
+                                                         </font>
+                                                      </RadioButton>
+                                                      <Button mnemonicParsing="false" onAction="#createChat" styleClass="btn-login" text="Create">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                                <Label layoutX="509.0" layoutY="42.0" prefHeight="27.0" prefWidth="142.0" text="Create chat:" textFill="#b3bbe5" AnchorPane.rightAnchor="99.0">
+                                                   <font>
+                                                      <Font name="Segoe UI Emoji" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="230.0" layoutY="26.0" mnemonicParsing="false" onAction="#addPrivateChat" styleClass="btn-login" text="add">
+                                                   <font>
+                                                      <Font name="Cambria" size="16.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="255.0" layoutY="80.0" onMouseClicked="#reload" text="🗘" textFill="#b3bbe5" AnchorPane.rightAnchor="471.4">
+                                                   <font>
+                                                      <Font name="Segoe UI Emoji" size="24.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab fx:id="someChat" text="someChat">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <BorderPane fx:id="inputChat" prefHeight="441.0" prefWidth="675.0" styleClass="main-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <padding>
+                                                      <Insets bottom="20.0" left="15.0" right="15.0" />
+                                                   </padding>
+                                                   <bottom>
+                                                      <AnchorPane prefHeight="27.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+                                                         <children>
+                                                            <CustomTextField fx:id="input" minHeight="35.0" onAction="#send" styleClass="text-input" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <font>
+                                                                  <Font name="Segoe UI Emoji" size="20.0" />
+                                                               </font>
+                                                            </CustomTextField>
+                                                            <ImageView fx:id="addEmojis" fitHeight="30.0" fitWidth="30.0" layoutX="677.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="3.0">
+                                                               <image>
+                                                                  <Image url="@img/addEmoji.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </bottom>
+                                                   <center>
+                                                      <AnchorPane prefHeight="406.0" prefWidth="721.0" BorderPane.alignment="CENTER">
+                                                         <BorderPane.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </BorderPane.margin>
+                                                         <children>
+                                                            <TextArea fx:id="msgArea" editable="false" layoutY="15.0" prefHeight="454.0" prefWidth="721.0" styleClass="border-textArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <font>
+                                                                  <Font name="Segoe UI Emoji" size="20.0" />
+                                                               </font>
+                                                            </TextArea>
+                                                            <Label alignment="CENTER" layoutX="324.0" onMouseClicked="#loadHistory" text="load history" textFill="#b3bbe380" AnchorPane.leftAnchor="324.0" AnchorPane.rightAnchor="324.79999999999995">
+                                                               <font>
+                                                                  <Font name="Cambria" size="14.0" />
+                                                               </font>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </Label>
+                                                            <Pane fx:id="emojiPicker" prefHeight="232.0" prefWidth="295.0" styleClass="emojiPane" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                               <children>
+                                                                  <VBox fx:id="a1" alignment="TOP_CENTER" prefHeight="232.0" prefWidth="295.0" styleClass="emojiPane">
+                                                                     <padding>
+                                                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                                                     </padding>
+                                                                     <children>
+                                                                        <ScrollPane hbarPolicy="NEVER" prefHeight="211.0" prefWidth="274.0" style="-fx-background-color: #3E3E50FF;" vbarPolicy="NEVER">
+                                                                           <content>
+                                                                              <Accordion maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" styleClass="titledPane_emoji">
+                                                                                 <panes>
+                                                                                    <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="PEOPLE">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="people1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😀" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😁" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😂" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😃" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😉" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😊" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😋" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😎" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😍" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😗" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😙" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="☺" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🙂" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😇" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🤑" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🤠" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="😈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="👿" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="👹" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="👺" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🤡" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="199.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💩" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" style="-fx-text-fill: #b3bbe5;" text="ACTIVITY" textFill="#00fa32">
+                                                                                       <opaqueInsets>
+                                                                                          <Insets />
+                                                                                       </opaqueInsets>
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="activity1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="👾" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎪" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎭" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎨" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎰" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚣" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🛀" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎗" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎟" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎫" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎖" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏆" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏅" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⚽" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⚾" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏀" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏂" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚴" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎲" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎻" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏹" textAlignment="JUSTIFY" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="FOOD_AND_DRINK">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="food1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍇" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍉" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍊" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍋" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍌" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍍" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍎" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍏" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍒" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍓" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍅" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍆" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍞" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍪" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍴" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍭" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🍨" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane expanded="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="NATURE">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="nature1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🙈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🙉" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💦" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💨" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐵" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐶" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐕" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐺" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐱" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🦁" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐯" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐴" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐮" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐃" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐏" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐘" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐀" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐨" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐔" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🐦" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="OBJECTS">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="object1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💌" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💣" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🕳" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🛍" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="📿" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💎" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🔪" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏺" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🗺" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🖼" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚪" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🛏" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🛋" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚽" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⛱" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎐" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🕹" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="📻" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="📱" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="199.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="☎" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="199.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="📟" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane layoutX="10.0" layoutY="138.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="SYMBOLS">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="symbols1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="👁‍🗨" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💘" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💓" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💚" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💤" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💮" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💈" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🕛" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="♠" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🀄" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🔔" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚹" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚼" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="☢" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="☣" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⬆" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="❌" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="〽" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🎦" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="152.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="💯" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                    <TitledPane layoutX="10.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-text-fill: #b3bbe5;" styleClass="titledPane_emoji" text="TRAVEL_AND_PLACES">
+                                                                                       <content>
+                                                                                          <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
+                                                                                             <content>
+                                                                                                <TilePane fx:id="travel1" alignment="CENTER" hgap="5.0" prefHeight="175.0" prefWidth="272.0" vgap="5.0">
+                                                                                                   <children>
+                                                                                                      <Label onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏔" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⛰" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏕" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏜" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏝" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="76.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏨" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏫" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🏭" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🌉" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚇" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="220.0" layoutY="100.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚌" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="125.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚕" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="148.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⚓" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="172.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="⛴" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                      <Label layoutX="196.0" layoutY="124.0" onMouseClicked="#getEmojiText" prefHeight="42.0" prefWidth="42.0" styleClass="emojiGet" text="🚁" textAlignment="CENTER" textFill="#b3bbe5" textOverrun="WORD_ELLIPSIS">
+                                                                                                         <font>
+                                                                                                            <Font name="Segoe UI Emoji" size="30.0" />
+                                                                                                         </font>
+                                                                                                      </Label>
+                                                                                                   </children>
+                                                                                                </TilePane>
+                                                                                             </content>
+                                                                                          </ScrollPane>
+                                                                                       </content>
+                                                                                    </TitledPane>
+                                                                                 </panes>
+                                                                              </Accordion>
+                                                                           </content>
+                                                                        </ScrollPane>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </Pane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </center>
+                                                   <top>
+                                                      <Label fx:id="some_name_chat" alignment="CENTER" prefHeight="24.0" prefWidth="744.0" text="name" textAlignment="CENTER" textFill="#cf5b25b2" wrapText="true" BorderPane.alignment="TOP_CENTER">
+                                                         <BorderPane.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </BorderPane.margin>
+                                                         <font>
+                                                            <Font name="Cambria" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </top>
+                                                </BorderPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="auth_page" prefHeight="558.0" prefWidth="840.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="372.0" layoutY="43.0" prefHeight="200.0" prefWidth="100.0" styleClass="tabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TabPane fx:id="tabPaneRegLog" prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab fx:id="tabLOGIN" text="login">
+                                       <content>
+                                          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Please login or register :" textFill="#b3bbe5">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <CustomTextField fx:id="login" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Login">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomTextField>
+                                                <CustomPasswordField fx:id="password" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Password">
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomPasswordField>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0">
+                                                   <children>
+                                                      <CheckBox layoutY="4.0" mnemonicParsing="false" text="Remmeber me." textFill="#b3bbe5">
+                                                         <font>
+                                                            <Font name="Cambria" size="15.0" />
+                                                         </font>
+                                                      </CheckBox>
+                                                      <Button fx:id="loginNOW" layoutX="210.0" layoutY="17.0" mnemonicParsing="false" styleClass="btn-login" text="Login now" textAlignment="CENTER">
+                                                         <font>
+                                                            <Font name="Cambria" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </Pane>
+                                                <Separator maxWidth="-Infinity" minWidth="-Infinity" opacity="0.4" prefWidth="300.0">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
+                                                   <children>
+                                                      <Label layoutX="14.0" text="Don't have a account ?    &gt; " textFill="#b3bce3b3">
+                                                         <font>
+                                                            <Font name="Cambria" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="go_to_register_page" layoutX="197.0" text="Register now!" textFill="#7b93ff">
+                                                         <font>
+                                                            <Font name="Cambria" size="15.0" />
+                                                         </font>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </Label>
+                                                   </children>
+                                                </Pane>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                  </Tab>
+                                  <Tab fx:id="tabREG" text="register">
+                                       <content>
+                                          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Register now!" textFill="#b3bbe5">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <CustomTextField fx:id="nameREG" layoutX="283.0" layoutY="56.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Name">
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomTextField>
+                                                <CustomTextField fx:id="emailREG" layoutX="283.0" layoutY="56.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Email">
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomTextField>
+                                                <CustomTextField fx:id="loginREG" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Login">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomTextField>
+                                                <CustomPasswordField fx:id="passwordREG" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0" promptText="Password">
+                                                   <font>
+                                                      <Font name="Cambria" size="18.0" />
+                                                   </font>
+                                                </CustomPasswordField>
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0">
+                                                   <children>
+                                                      <Button fx:id="registerBTN" layoutX="112.0" layoutY="14.0" mnemonicParsing="false" styleClass="btn-login" text="Register" textAlignment="CENTER">
+                                                         <font>
+                                                            <Font name="Cambria" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </Pane>
+                                                <Separator maxWidth="-Infinity" minWidth="-Infinity" opacity="0.4" prefWidth="300.0">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </Separator>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <Pane layoutY="30.0" opacity="0.0" prefHeight="565.0" prefWidth="3.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <cursor>
+            <Cursor fx:constant="E_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane opacity="0.0" prefHeight="3.0" prefWidth="3.0" style="-fx-background-color: green;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="dragZone" layoutX="3.0" layoutY="5.0" opacity="0.0" prefHeight="21.0" prefWidth="735.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0" />
+      <Pane layoutX="847.0" opacity="0.0" prefHeight="3.0" prefWidth="3.0" style="-fx-background-color: green;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane layoutY="597.0" opacity="0.0" prefHeight="3.0" prefWidth="3.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NE_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="847.0" layoutY="600.0" opacity="0.0" prefHeight="3.0" prefWidth="3.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="5.0" layoutY="597.0" opacity="0.0" prefHeight="3.0" prefWidth="837.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="5.0" opacity="0.0" prefHeight="3.0" prefWidth="735.0" style="-fx-background-color: blue;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0">
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="847.0" layoutY="30.0" opacity="0.0" prefHeight="565.0" prefWidth="3.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <cursor>
+            <Cursor fx:constant="E_RESIZE" />
+         </cursor>
+      </Pane>
+   </children>
+</AnchorPane>

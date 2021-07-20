@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/main/java/Json/MessageJson.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Json/RoomJson.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Json/UserJson.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/net/Callback.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/net/ClientHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/net/Network.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/sample/Controller.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/sample/Emoji.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/sample/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/sample/ResizeHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/sample/animation/AnimInputs.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
